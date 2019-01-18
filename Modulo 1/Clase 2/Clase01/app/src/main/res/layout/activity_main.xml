@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        android:layout_weight="1"
+        android:background="@color/colo1">
+
+        <TextView
+            android:id="@+id/tvTexto1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Texto 1"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            tools:text="Texto 1" />
+
+        <EditText
+            android:id="@+id/etTexto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/lbl_ingrese_texto" />
+
+        <TextView
+            android:id="@+id/tvTexto2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            tools:text="Texto 2" />
+    </FrameLayout>
+    <!--
+    px -> dp = density per pixel
+    px -> sp = size per pixel
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:background="@color/colo2">
+
+            <Button
+                android:id="@+id/btnBotonUno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/lbl_boton_uno" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:background="@color/colo3">
+
+            <TextView
+                android:id="@+id/tvTexto3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textSize="16sp"
+                tools:text="Texto 3" />
+
+            <Button
+                android:id="@+id/btnBotonDos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:text="@string/lbl_boton_dos" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>
