@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Clase03</string>
+    <string name="lbl_nombre">Nombre</string>
+    <string name="lbl_apellido">Apellido</string>
+    <string name="lbl_masculino">Masculino</string>
+    <string name="lbl_femenino">Femenino</string>
+    <string name="lbl_terminos">Acepto términos</string>
+    <string name="lbl_procesar">Procesar</string>
+</resources>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Clase03_1</string>
+    <string name="lbl_nombre">Nombre</string>
+    <string name="lbl_apellido">Apellido</string>
+    <string name="lbl_masculino">Masculino</string>
+    <string name="lbl_femenino">Femenino</string>
+    <string name="lbl_terminos">Acepto los términos</string>
+    <string name="lbl_procesar">Procesar</string>
+    <string name="lbl_pantalla_uno">Pantalla Uno</string>
+    <string name="lbl_pantalla_dos">Pantalla Dos</string>
+    <string name="lbl_siguiente">Siguiente</string>
+    <string name="lbl_volver">Volver</string>
+    <string name="lbl_continuar">Continuar</string>
+</resources>
