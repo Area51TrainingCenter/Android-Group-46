@@ -1,5 +1,6 @@
 package com.area51.clase03_1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,14 @@ public class PantallaDosActivity extends AppCompatActivity {
         texto = (TextView) findViewById(R.id.tvTexto);
         volver = (Button) findViewById(R.id.btnVolver);
         continuar = (Button) findViewById(R.id.btnContinuar);
+
+        String nombre = getIntent().getStringExtra("nombre");
+        String apellido = getIntent().getStringExtra("apellido");
+        String genero = getIntent().getStringExtra("genero");
+
+        texto.setText("Nombre: " + nombre +
+                "\nApellido: " + apellido +
+                "\nGenero: " + genero);
     }
 
     @Override
@@ -35,6 +44,12 @@ public class PantallaDosActivity extends AppCompatActivity {
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent =
+                        new Intent(
+                                PantallaDosActivity.this,
+                                PantallaTresActivity.class);
+                startActivity(intent);
 
             }
         });

@@ -11,4 +11,5 @@
     <string name="lbl_siguiente">Siguiente</string>
     <string name="lbl_volver">Volver</string>
     <string name="lbl_continuar">Continuar</string>
+    <string name="lbl_reiniciar">Reiniciar</string>
 </resources>
