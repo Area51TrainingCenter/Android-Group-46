@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /*
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     ListView lvLista;
     Button btnRegistrar;
     private PersonaAdapter adapter;
+    private int posicion = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
                         android.R.layout.simple_spinner_dropdown_item,
                         getResources().getStringArray(R.array.generos));
         spGenero.setAdapter(arrayAdapter);
+
+        btnRegistrar.setTag(false);
+
     }
 /*
     @OnClick(R.id.btnRegistrar)
@@ -95,13 +101,56 @@ public class MainActivity extends AppCompatActivity {
                 persona.setApellido(apellido);
                 persona.setGenero(genero);
 
-                //Mostrarmos mensaje de confirmación
-                Toast.makeText(MainActivity.this, "Se registro.",
-                        Toast.LENGTH_SHORT).show();
+                if ((boolean) btnRegistrar.getTag()) {
+                    //Actualizar true
 
-                //Mostramos en la lista
-                adapter.agregar(persona);
+                    adapter.actualizarDato(persona, posicion);
+
+                    Toast.makeText(MainActivity.this,
+                            "Se actualizo correcto",
+                            Toast.LENGTH_SHORT).show();
+
+                    limpiarDatos();
+
+                    btnRegistrar.setTag(false);
+                    posicion = 0;
+                    btnRegistrar.setText("Registrar");
+
+                } else {
+                    //Registrar false
+
+                    //Mostrarmos mensaje de confirmación
+                    Toast.makeText(MainActivity.this, "Se registro.",
+                            Toast.LENGTH_SHORT).show();
+
+                    //Mostramos en la lista
+                    adapter.agregar(persona);
+                }
             }
         });
+    }
+
+    public void limpiarDatos() {
+        etNombre.setText("");
+        etApellido.setText("");
+        spGenero.setSelection(0);
+
+        etNombre.requestFocus();
+    }
+
+    public void cargarDatos(Persona persona, int posicion) {
+        etNombre.setText(persona.getNombre());
+        etApellido.setText(persona.getApellido());
+
+        String[] datoGenero = getResources().getStringArray(R.array.generos);
+        for (int i = 0; i < datoGenero.length; i++) {
+            if (datoGenero[i].equals(persona.getGenero()))
+                spGenero.setSelection(i);
+        }
+
+        btnRegistrar.setTag(true);
+        btnRegistrar.setText("Actualizar");
+
+        this.posicion = posicion;
     }
 }

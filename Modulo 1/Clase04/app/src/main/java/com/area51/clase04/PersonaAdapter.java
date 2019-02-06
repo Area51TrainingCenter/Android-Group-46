@@ -1,6 +1,7 @@
 package com.area51.clase04;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,12 +36,12 @@ public class PersonaAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, final ViewGroup viewGroup) {
+    public View getView(final int posicion, View view, final ViewGroup viewGroup) {
         view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item, viewGroup, false);
 
         //Obtener los datos según la posición
-        Persona persona = (Persona) getItem(i);
+        final Persona persona = (Persona) getItem(posicion);
 
         //Mapear los componentes
         TextView tvNombre = (TextView) view.findViewById(R.id.tvNombre);
@@ -67,6 +68,8 @@ public class PersonaAdapter extends BaseAdapter {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
+                                ((MainActivity) viewGroup.getContext()).cargarDatos(persona, posicion);
+
                             }
                         }
                 );
@@ -75,6 +78,8 @@ public class PersonaAdapter extends BaseAdapter {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+
+                                cargarEliminar(persona, posicion, viewGroup.getContext());
 
                             }
                         }
@@ -85,5 +90,45 @@ public class PersonaAdapter extends BaseAdapter {
         });
 
         return view;
+    }
+
+    private void cargarEliminar(final Persona persona, int posicion, final Context context) {
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(context);
+        builder.setTitle("Advertencia");
+        builder.setMessage("Está seguro de eliminar?");
+        builder.setPositiveButton(
+                "Aceptar",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        //Acá removemos del listado
+                        lista.remove(persona);
+                        //Actualizar la lista
+                        notifyDataSetChanged();
+                        //((MainActivity)context).limpiarDatos();
+
+                    }
+                }
+        );
+        builder.setNegativeButton(
+                "Cancelar",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                }
+        );
+        builder.show();
+    }
+
+    public void actualizarDato(Persona persona, int posicion) {
+        lista.get(posicion).setNombre(persona.getNombre());
+        lista.get(posicion).setApellido(persona.getApellido());
+        lista.get(posicion).setGenero(persona.getGenero());
+
+        notifyDataSetChanged();
     }
 }
