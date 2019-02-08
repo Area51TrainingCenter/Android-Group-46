@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/contenedor"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:cardCornerRadius="5dp"
+    app:cardUseCompatPadding="true">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/sdvImagen"
-        android:layout_width="match_parent"
-        android:layout_height="300dp" />
-
-    <TextView
-        android:id="@+id/tvTitulo"
+    <LinearLayout
+        android:id="@+id/contenedor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textSize="18sp" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvPrecioAnterior"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="10dp" />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdvImagen"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
 
-    <TextView
-        android:id="@+id/tvPrecioActual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="10dp"
-        android:textSize="16sp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvPrecioAnterior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/tvPrecioActual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
