@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Marca">
+        <menu>
+            <item
+                android:id="@+id/nav_agregar_marca"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Agregar" />
+        </menu>
+    </item>
+
+    <item android:title="Producto">
+        <menu>
+            <item
+                android:id="@+id/nav_agregar_producto"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Agregar" />
+            <item
+                android:id="@+id/nav_listar_producto"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Listar" />
+        </menu>
+    </item>
+</menu>
