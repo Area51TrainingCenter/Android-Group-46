@@ -45,7 +45,6 @@ public class MetodoSQLite {
         Cursor cursor = db.rawQuery(
                 "select a.id, " +
                         "a.nombre, " +
-                        "a.marca, " +
                         "a.modelo, " +
                         "a.color, " +
                         "b.id as 'idMarca', " +

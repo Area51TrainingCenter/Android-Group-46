@@ -47,10 +47,10 @@ public class AgregarProductoFragment extends Fragment {
         spMarca = (AppCompatSpinner) view.findViewById(R.id.spMarca);
         etModelo = (AppCompatEditText) view.findViewById(R.id.etModelo);
         etColor = (AppCompatEditText) view.findViewById(R.id.etColor);
-        tilNombre = (TextInputLayout) view.findViewById(R.id.etNombre);
+        tilNombre = (TextInputLayout) view.findViewById(R.id.tilNombre);
         tilModelo = (TextInputLayout) view.findViewById(R.id.tilModelo);
         tilColor = (TextInputLayout) view.findViewById(R.id.tilColor);
-        etNombre = (AppCompatEditText) view.findViewById(R.id.tilNombre);
+        etNombre = (AppCompatEditText) view.findViewById(R.id.etNombre);
         btnAgregar = (AppCompatButton) view.findViewById(R.id.btnAgregar);
 
         MetodoSQLite sqLite = new MetodoSQLite(getContext());
@@ -125,7 +125,7 @@ public class AgregarProductoFragment extends Fragment {
 
     private int obtenerId(String nombreMarca) {
         for (Marca item : listaMarca) {
-            if (item.getNombre().equals(nombreMarca)) {
+            if ((item.getId() + " - " + item.getNombre()).equals(nombreMarca)) {
                 return item.getId();
             }
         }
