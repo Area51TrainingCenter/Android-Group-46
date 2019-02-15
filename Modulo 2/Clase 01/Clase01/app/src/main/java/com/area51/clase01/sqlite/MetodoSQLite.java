@@ -88,4 +88,19 @@ public class MetodoSQLite {
 
         db.insert("producto", null, values);
     }
+
+    public int eliminarProductoPorId(int id) {
+        SQLiteDatabase db = conexion.getWritableDatabase();
+        int result = 0;
+        try {
+            db.beginTransaction();
+            result = db.delete("producto", "id=?",
+                    new String[]{String.valueOf(id)});
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+
+        }
+        db.endTransaction();
+        return result;
+    }
 }
