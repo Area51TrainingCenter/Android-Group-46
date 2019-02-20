@@ -13,4 +13,5 @@
     <string name="lbl_agregar">Agregar</string>
     <string name="lbl_modelo">Modelo</string>
     <string name="lbl_color">Color</string>
+    <string name="lbl_modificar">Modificar</string>
 </resources>

@@ -1,18 +1,29 @@
 package com.area51.clase01.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.area51.clase01.R;
+import com.area51.clase01.modelos.Marca;
 import com.area51.clase01.modelos.Producto;
 import com.area51.clase01.sqlite.MetodoSQLite;
 
@@ -77,7 +88,7 @@ public class ProductoAdapter extends
                 builder.setPositiveButton("Modificar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        cargarDialog(producto);
                     }
                 });
                 builder.setNegativeButton("Eliminar", new DialogInterface.OnClickListener() {
@@ -90,6 +101,56 @@ public class ProductoAdapter extends
 
             }
         });
+    }
+
+    private void cargarDialog(Producto producto) {
+        Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.item_modificar);
+        dialog.getWindow().setLayout(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        AppCompatSpinner spMarca = (AppCompatSpinner) dialog.findViewById(R.id.spMarca);
+        AppCompatEditText etModelo = (AppCompatEditText) dialog.findViewById(R.id.etModelo);
+        AppCompatEditText etColor = (AppCompatEditText) dialog.findViewById(R.id.etColor);
+        AppCompatEditText etNombre = (AppCompatEditText) dialog.findViewById(R.id.etNombre);
+        AppCompatButton btnModificar = (AppCompatButton) dialog.findViewById(R.id.btnModificar);
+
+        MetodoSQLite sqLite = new MetodoSQLite(context);
+        ArrayList<Marca> listaMarca = sqLite.obtenerMarcas();
+        ArrayList<String> marcaTexto = new ArrayList<>();
+        marcaTexto.add("Seleccione");
+        for (Marca item : listaMarca) {
+            marcaTexto.add(item.getId() + " - " + item.getNombre());
+        }
+        ArrayAdapter adapter = new ArrayAdapter(
+                context,
+                android.R.layout.simple_spinner_dropdown_item,
+                marcaTexto
+        );
+        spMarca.setAdapter(adapter);
+
+        etModelo.setText(producto.getModelo());
+        etNombre.setText(producto.getNombre());
+        etColor.setText(producto.getColor());
+
+        for (int i = 0; i < listaMarca.size(); i++) {
+            Marca item = listaMarca.get(i);
+            if (item.getNombre().equals(producto.getMarca())) {
+                spMarca.setSelection(i + 1);
+                break;
+            }
+        }
+
+        btnModificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        dialog.show();
     }
 
     private void eliminar(int posicion, Producto producto) {

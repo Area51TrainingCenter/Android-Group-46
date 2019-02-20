@@ -103,4 +103,22 @@ public class MetodoSQLite {
         db.endTransaction();
         return result;
     }
+
+    public int actualizarProducto(Producto producto) {
+        SQLiteDatabase db = conexion.getWritableDatabase();
+        int result = 0;
+        db.beginTransaction();
+
+        ContentValues values = new ContentValues();
+        values.put("nombre", producto.getNombre());
+        values.put("idMarca", producto.getIdMarca());
+        values.put("modelo", producto.getModelo());
+        values.put("color", producto.getColor());
+        result = db.update("productos", values, "id=?",
+                new String[]{String.valueOf(producto.getId())});
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
+        return result;
+    }
 }
