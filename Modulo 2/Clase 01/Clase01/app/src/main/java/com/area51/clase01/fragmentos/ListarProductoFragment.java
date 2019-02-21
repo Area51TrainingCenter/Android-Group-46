@@ -37,14 +37,16 @@ public class ListarProductoFragment extends Fragment {
 
         rvProductos = (RecyclerView) view.findViewById(R.id.rvProductos);
 
+        cargarDatos();
+        return view;
+    }
+
+    public void cargarDatos() {
         MetodoSQLite sqLite = new MetodoSQLite(getContext());
         lista = sqLite.obtenerProductos();
 
         adapter = new ProductoAdapter(lista, getContext());
         rvProductos.setLayoutManager(new LinearLayoutManager(getContext()));
         rvProductos.setAdapter(adapter);
-
-        return view;
     }
-
 }

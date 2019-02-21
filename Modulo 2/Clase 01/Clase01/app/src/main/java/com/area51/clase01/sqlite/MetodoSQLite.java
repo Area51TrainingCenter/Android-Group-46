@@ -114,7 +114,7 @@ public class MetodoSQLite {
         values.put("idMarca", producto.getIdMarca());
         values.put("modelo", producto.getModelo());
         values.put("color", producto.getColor());
-        result = db.update("productos", values, "id=?",
+        result = db.update("producto", values, "id=?",
                 new String[]{String.valueOf(producto.getId())});
 
         db.setTransactionSuccessful();

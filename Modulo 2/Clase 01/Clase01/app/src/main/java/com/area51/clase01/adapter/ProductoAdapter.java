@@ -103,22 +103,22 @@ public class ProductoAdapter extends
         });
     }
 
-    private void cargarDialog(Producto producto) {
-        Dialog dialog = new Dialog(context);
+    private void cargarDialog(final Producto producto) {
+        final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.item_modificar);
         dialog.getWindow().setLayout(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
-        AppCompatSpinner spMarca = (AppCompatSpinner) dialog.findViewById(R.id.spMarca);
-        AppCompatEditText etModelo = (AppCompatEditText) dialog.findViewById(R.id.etModelo);
-        AppCompatEditText etColor = (AppCompatEditText) dialog.findViewById(R.id.etColor);
-        AppCompatEditText etNombre = (AppCompatEditText) dialog.findViewById(R.id.etNombre);
+        final AppCompatSpinner spMarca = (AppCompatSpinner) dialog.findViewById(R.id.spMarca);
+        final AppCompatEditText etModelo = (AppCompatEditText) dialog.findViewById(R.id.etModelo);
+        final AppCompatEditText etColor = (AppCompatEditText) dialog.findViewById(R.id.etColor);
+        final AppCompatEditText etNombre = (AppCompatEditText) dialog.findViewById(R.id.etNombre);
         AppCompatButton btnModificar = (AppCompatButton) dialog.findViewById(R.id.btnModificar);
 
-        MetodoSQLite sqLite = new MetodoSQLite(context);
-        ArrayList<Marca> listaMarca = sqLite.obtenerMarcas();
+        final MetodoSQLite sqLite = new MetodoSQLite(context);
+        final ArrayList<Marca> listaMarca = sqLite.obtenerMarcas();
         ArrayList<String> marcaTexto = new ArrayList<>();
         marcaTexto.add("Seleccione");
         for (Marca item : listaMarca) {
@@ -146,6 +146,26 @@ public class ProductoAdapter extends
         btnModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Producto prod = new Producto();
+                prod.setId(producto.getId());
+                prod.setColor(etColor.getText().toString());
+                prod.setNombre(etNombre.getText().toString());
+                prod.setModelo(etModelo.getText().toString());
+                prod.setMarca(spMarca.getSelectedItem().toString());
+                int idMarca = 0;
+                for (Marca item : listaMarca) {
+                    if ((item.getId() + " - " + item.getNombre())
+                            .equals(spMarca.getSelectedItem().toString())) {
+                        idMarca = item.getId();
+                    }
+                }
+                prod.setIdMarca(idMarca);
+                sqLite.actualizarProducto(prod);
+                lista = sqLite.obtenerProductos();
+                notifyDataSetChanged();
+                dialog.dismiss();
+                Toast.makeText(context, "Se actualizo", Toast.LENGTH_SHORT).show();
 
             }
         });
