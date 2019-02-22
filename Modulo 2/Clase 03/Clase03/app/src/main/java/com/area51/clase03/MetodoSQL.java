@@ -1,8 +1,8 @@
 package com.area51.clase03;
 
+import com.area51.clase03.entidades.Marca;
 import com.area51.clase03.entidades.Producto;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 import io.realm.Realm;
@@ -10,12 +10,27 @@ import io.realm.RealmResults;
 
 public class MetodoSQL {
 
-    public Producto guardarProducto(Producto producto) {
+    public Marca guardarModificarMarca(Marca marca) {
+        Marca result = null;
+        Realm realm = Realm.getDefaultInstance();
+        try {
+            realm.beginTransaction();
+            if (marca.getId() == null)
+                marca.setId(UUID.randomUUID().toString());
+            result = realm.copyToRealmOrUpdate(marca);
+            realm.commitTransaction();
+        } catch (Exception e) {
+            realm.cancelTransaction();
+        }
+        return result;
+    }
+
+    public Producto guardarModificarProducto(Producto producto) {
         Producto result = null;
         Realm realm = Realm.getDefaultInstance();
         try {
             realm.beginTransaction();
-            if (producto.getId() != null && !producto.getId().equals(""))
+            if (producto.getId() == null)
                 producto.setId(UUID.randomUUID().toString());
             result = realm.copyToRealmOrUpdate(producto);
             realm.commitTransaction();
@@ -30,6 +45,12 @@ public class MetodoSQL {
         return realm.where(Producto.class).findAll();
     }
 
+
+    public RealmResults<Marca> obtenerMarcas() {
+        Realm realm = Realm.getDefaultInstance();
+        return realm.where(Marca.class).findAll();
+    }
+
     public void eliminar(String id) {
         Realm realm = Realm.getDefaultInstance();
         try {
@@ -41,7 +62,7 @@ public class MetodoSQL {
                 producto.deleteFromRealm();
                 realm.commitTransaction();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             realm.cancelTransaction();
         }
     }
