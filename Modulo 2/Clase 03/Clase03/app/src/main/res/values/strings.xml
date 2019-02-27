@@ -15,4 +15,13 @@
     <string name="lbl_marca">Marca</string>
     <string name="lbl_modelo">Modelo</string>
     <string name="lbl_color">Color</string>
+    <string name="lbl_iniciar_sesion">Iniciar Sesión</string>
+    <string name="lbl_registrar">Registrar Ahora</string>
+    <string name="lbl_contrasena">Contraseña</string>
+    <string name="lbl_usuario">Usuario</string>
+    <string name="lbl_apellido">Apellido</string>
+    <string name="lbl_masculino">Masculino</string>
+    <string name="lbl_femenino">Femenino</string>
+    <string name="lbl_rep_contrasena">Repetir Contraseñ</string>
+    <string name="lbl_administrador">Administrador</string>
 </resources>
