@@ -52,7 +52,9 @@ public class ListarProductoFragment extends Fragment {
 
         return view;
     }
-
+    //Job Scheduled
+    //Service
+    //Broadcast Receiver
     @Override
     public void onStart() {
         super.onStart();
