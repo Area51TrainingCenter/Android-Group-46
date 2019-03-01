@@ -5,6 +5,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_mantener_usuario"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Mantener Usuario" />
+        <item
             android:id="@+id/nav_agregar_marca"
             android:icon="@drawable/ic_menu_camera"
             android:title="Agregar Marca" />
@@ -12,6 +16,10 @@
             android:id="@+id/nav_listar_producto"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Listar Producto" />
+        <item
+            android:id="@+id/nav_cerrar_sesion"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Cerrar Sesión" />
     </group>
 
 </menu>

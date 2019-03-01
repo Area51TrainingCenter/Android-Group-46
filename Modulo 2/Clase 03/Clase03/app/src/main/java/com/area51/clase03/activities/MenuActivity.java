@@ -1,5 +1,7 @@
 package com.area51.clase03.activities;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,10 +16,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.area51.clase03.R;
 import com.area51.clase03.fragmentos.AgregarMarcaFragment;
 import com.area51.clase03.fragmentos.ListarProductoFragment;
+
+import org.w3c.dom.Text;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +43,31 @@ public class MenuActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View header = navigationView.getHeaderView(0);
+        TextView tvNombreCompleto = header.findViewById(R.id.tvNombreCompleto);
+        TextView tvEdad = header.findViewById(R.id.tvEdad);
+        tvNombreCompleto.setText(
+                getIntent().getStringExtra("v_nombre") +
+                        " " +
+                        getIntent().getStringExtra("v_apellido"));
+        tvEdad.setText(
+                getIntent().getStringExtra("v_edad")
+        );
+
+        if (!getIntent()
+                .getBooleanExtra("v_administrador", false))
+            navigationView.getMenu()
+                    .getItem(0).setVisible(false);
+
+        /*
+        ImageView imageView = new ImageView(this);
+        if (item.isAdministrador()) {
+            imageView.setImageResource(R.drawable.ic_logo);
+        } else {
+            imageView.setImageResource(R.drawable.ic_menu_camera);
+        }
+        */
     }
 
     @Override
@@ -83,6 +114,22 @@ public class MenuActivity extends AppCompatActivity
             fragment = new AgregarMarcaFragment();
         } else if (id == R.id.nav_listar_producto) {
             fragment = new ListarProductoFragment();
+        } else if (id == R.id.nav_mantener_usuario) {
+
+        } else if (id == R.id.nav_cerrar_sesion) {
+            SharedPreferences.Editor editor =
+                    getSharedPreferences("clase_android", MODE_PRIVATE).edit();
+            editor.clear();
+            editor.apply();
+
+            Intent intent =
+                    new Intent(MenuActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+
         }
 
         if (fragment != null) {

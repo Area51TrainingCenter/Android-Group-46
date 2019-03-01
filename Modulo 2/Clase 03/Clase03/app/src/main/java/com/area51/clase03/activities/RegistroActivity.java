@@ -10,12 +10,18 @@ import android.support.v7.widget.AppCompatRadioButton;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.area51.clase03.MetodoSQL;
 import com.area51.clase03.R;
 import com.area51.clase03.entidades.Marca;
+import com.area51.clase03.entidades.Usuario;
+
+import java.util.ArrayList;
 
 public class RegistroActivity extends AppCompatActivity {
     private TextInputLayout tilUsuario, tilNombre, tilApellido, tilContrasena,
@@ -39,6 +45,7 @@ public class RegistroActivity extends AppCompatActivity {
         tilRepetirContrasena = findViewById(R.id.tilRepContrasena);
         etUsuario = findViewById(R.id.etUsuario);
         etNombre = findViewById(R.id.etNombre);
+        etApellido = findViewById(R.id.etApellido);
         etContrasena = findViewById(R.id.etContrasena);
         etRepetirContrasena = findViewById(R.id.etRepContrasena);
         rbMasculino = findViewById(R.id.rbMasculino);
@@ -46,6 +53,18 @@ public class RegistroActivity extends AppCompatActivity {
         cbAdministrador = findViewById(R.id.cbAdministrador);
         btnRegistro = findViewById(R.id.btnRegistrar);
         spEdad = findViewById(R.id.spEdad);
+
+        ArrayList<String> edades = new ArrayList<>();
+        for (int i = 10; i < 30; i++) {
+            edades.add(String.valueOf(i));
+        }
+        ArrayAdapter adapter =
+                new ArrayAdapter(
+                        this,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        edades
+                );
+        spEdad.setAdapter(adapter);
     }
 
     @Override
@@ -76,7 +95,26 @@ public class RegistroActivity extends AppCompatActivity {
                 String repContrasena = etRepetirContrasena.getText().toString();
                 boolean administrador = cbAdministrador.isChecked();
 
+                Usuario model = new Usuario();
+                model.setUsuario(usuario);
+                model.setNombre(nombre);
+                model.setApellido(apellido);
+                model.setEdad(edad);
+                model.setGenero(genero);
+                model.setContrasena(contrasena);
+                model.setAdministrador(administrador);
 
+                MetodoSQL metodoSQL = new MetodoSQL();
+                Usuario resultado = metodoSQL.guardarModificarUsuario(model);
+                if (resultado.getId() != null &&
+                        !resultado.getId().equals("")) {
+                    finish();
+                    Toast.makeText(RegistroActivity.this,
+                            "Se registro correctamente", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RegistroActivity.this,
+                            "Ocurrio un error", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
