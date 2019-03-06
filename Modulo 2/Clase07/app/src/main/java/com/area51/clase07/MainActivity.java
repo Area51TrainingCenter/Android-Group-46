@@ -1,8 +1,11 @@
 package com.area51.clase07;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.area51.clase07.response.ObtenerSedesResponse;
 import com.google.gson.Gson;
@@ -13,11 +16,14 @@ import retrofit2.HttpException;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+    Button btnMapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnMapa = findViewById(R.id.btnUbicacion);
 
         MetodoWS metodoWS = HelperWS.obtenerConfiguracion()
                 .create(MetodoWS.class);
@@ -53,6 +59,21 @@ public class MainActivity extends AppCompatActivity {
                             Log.d("", "onError: BAD GATEWAY");
                     }
                 }
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =
+                        new Intent(MainActivity.this,
+                                MapsActivity.class);
+                startActivity(intent);
             }
         });
     }
