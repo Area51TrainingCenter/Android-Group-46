@@ -3,6 +3,8 @@ package com.area51.clase07;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,14 +18,15 @@ import retrofit2.HttpException;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnMapa;
+    private SedeAdapter adapter;
+    private RecyclerView rvDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnMapa = findViewById(R.id.btnUbicacion);
+        rvDatos = findViewById(R.id.rvDatos);
 
         MetodoWS metodoWS = HelperWS.obtenerConfiguracion()
                 .create(MetodoWS.class);
@@ -38,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
                 //response.headers();
                 ObtenerSedesResponse resultado = response.body();
                 Log.d("WebService", new Gson().toJson(resultado));
+                adapter = new SedeAdapter(MainActivity.this, resultado.getDataResulSedes());
+                rvDatos.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                rvDatos.setAdapter(adapter);
             }
 
             @Override
@@ -67,14 +73,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        btnMapa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =
-                        new Intent(MainActivity.this,
-                                MapsActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

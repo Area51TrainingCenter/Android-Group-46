@@ -3,6 +3,7 @@ package com.area51.clase07;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.area51.clase07.response.DataResulSede;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -38,8 +39,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        DataResulSede data = getIntent().getParcelableExtra("item");
+
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(Double.parseDouble(data.getLatitud()), Double.parseDouble(data.getLongitud()));
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }

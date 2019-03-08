@@ -1,6 +1,7 @@
 
 package com.area51.clase07.response;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -18,7 +19,7 @@ public class ObtenerSedesResponse {
     private String desRpta;
     @SerializedName("dataResulSedes")
     @Expose
-    private List<DataResulSede> dataResulSedes = null;
+    private ArrayList<DataResulSede> dataResulSedes = null;
 
     public String getNomServ() {
         return nomServ;
@@ -44,11 +45,11 @@ public class ObtenerSedesResponse {
         this.desRpta = desRpta;
     }
 
-    public List<DataResulSede> getDataResulSedes() {
+    public ArrayList<DataResulSede> getDataResulSedes() {
         return dataResulSedes;
     }
 
-    public void setDataResulSedes(List<DataResulSede> dataResulSedes) {
+    public void setDataResulSedes(ArrayList<DataResulSede> dataResulSedes) {
         this.dataResulSedes = dataResulSedes;
     }
 

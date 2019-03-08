@@ -1,10 +1,13 @@
 
 package com.area51.clase07.response;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataResulSede {
+public class DataResulSede implements Parcelable {
 
     @SerializedName("codEmpresa")
     @Expose
@@ -32,13 +35,13 @@ public class DataResulSede {
     private String codUbigeo;
     @SerializedName("latitud")
     @Expose
-    private Object latitud;
+    private String latitud;
     @SerializedName("longitud")
     @Expose
-    private Object longitud;
+    private String longitud;
     @SerializedName("desDistrito")
     @Expose
-    private Object desDistrito;
+    private String desDistrito;
     @SerializedName("horario")
     @Expose
     private String horario;
@@ -107,27 +110,27 @@ public class DataResulSede {
         this.codUbigeo = codUbigeo;
     }
 
-    public Object getLatitud() {
+    public String getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(Object latitud) {
+    public void setLatitud(String latitud) {
         this.latitud = latitud;
     }
 
-    public Object getLongitud() {
+    public String getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(Object longitud) {
+    public void setLongitud(String longitud) {
         this.longitud = longitud;
     }
 
-    public Object getDesDistrito() {
+    public String getDesDistrito() {
         return desDistrito;
     }
 
-    public void setDesDistrito(Object desDistrito) {
+    public void setDesDistrito(String desDistrito) {
         this.desDistrito = desDistrito;
     }
 
@@ -139,4 +142,54 @@ public class DataResulSede {
         this.horario = horario;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.codEmpresa);
+        dest.writeString(this.desEmpresa);
+        dest.writeString(this.desCorta);
+        dest.writeString(this.desRuc);
+        dest.writeString(this.desDireccion);
+        dest.writeString(this.telFijo);
+        dest.writeString(this.telMovil);
+        dest.writeString(this.codUbigeo);
+        dest.writeString(this.latitud);
+        dest.writeString(this.longitud);
+        dest.writeString(this.desDistrito);
+        dest.writeString(this.horario);
+    }
+
+    public DataResulSede() {
+    }
+
+    protected DataResulSede(Parcel in) {
+        this.codEmpresa = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.desEmpresa = in.readString();
+        this.desCorta = in.readString();
+        this.desRuc = in.readString();
+        this.desDireccion = in.readString();
+        this.telFijo = in.readString();
+        this.telMovil = in.readString();
+        this.codUbigeo = in.readString();
+        this.latitud = in.readString();
+        this.longitud = in.readString();
+        this.desDistrito = in.readString();
+        this.horario = in.readString();
+    }
+
+    public static final Creator<DataResulSede> CREATOR = new Creator<DataResulSede>() {
+        @Override
+        public DataResulSede createFromParcel(Parcel source) {
+            return new DataResulSede(source);
+        }
+
+        @Override
+        public DataResulSede[] newArray(int size) {
+            return new DataResulSede[size];
+        }
+    };
 }
