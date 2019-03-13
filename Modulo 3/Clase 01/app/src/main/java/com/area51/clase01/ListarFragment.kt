@@ -1,8 +1,10 @@
 package com.area51.clase01
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,16 +52,30 @@ class ListarFragment : Fragment() {
                 0,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
+            paramsText.setMargins(20, 20, 20, 20)
+            paramsText.gravity = Gravity.CENTER
             paramsText.weight = 1f
 
             val textView1 = TextView(context)
             textView1.layoutParams = paramsText
             textView1.text = item.usuario
+            textView1.gravity = Gravity.CENTER
             linear.addView(textView1)
 
+            val view = View(context)
+            val paramsView = LinearLayout.LayoutParams(
+                1,
+                LinearLayout.LayoutParams.MATCH_PARENT
+            )
+            view.layoutParams = paramsView
+            view.setBackgroundColor(Color.BLUE)
+            linear.addView(view)
+
+            //TextView textView2=new TextView(getContext());
             val textView2 = TextView(context)
             textView2.layoutParams = paramsText
             textView2.text = "${item.nombre} ${item.apellido}"
+            textView2.gravity = Gravity.CENTER
             linear.addView(textView2)
 
             contenedorLista.addView(linear)
