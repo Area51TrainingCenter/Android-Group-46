@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "855929246997",
+    "firebase_url": "https://democlase-230f1.firebaseio.com",
+    "project_id": "democlase-230f1",
+    "storage_bucket": "democlase-230f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855929246997:android:3eba610da61188c5",
+        "android_client_info": {
+          "package_name": "com.area51.clase02"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855929246997-es567vtvak1gpqsj21arjgcqvlibft5i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmI5T-h6Yi4gHYLcXMXxqI75uyVVp9cx4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
