@@ -1,6 +1,5 @@
 package com.area51.clasemvp.ui.seguridad.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +10,7 @@ import com.area51.clasemvp.R;
 import com.area51.clasemvp.ui.BaseActivity;
 import com.area51.clasemvp.ui.model.Usuario;
 import com.area51.clasemvp.ui.seguridad.presenter.RegistroPresenter;
-import com.area51.clasemvp.ui.seguridad.presenter.RegistroPresenterImpl;
+import com.area51.clasemvp.ui.seguridad.presenter.impl.RegistroPresenterImpl;
 import com.area51.clasemvp.ui.seguridad.views.RegistroView;
 
 public class RegistroActivity extends BaseActivity implements RegistroView {

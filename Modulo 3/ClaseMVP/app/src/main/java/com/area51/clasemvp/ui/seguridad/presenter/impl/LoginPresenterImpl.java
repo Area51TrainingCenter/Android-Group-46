@@ -1,10 +1,11 @@
-package com.area51.clasemvp.ui.seguridad.presenter;
+package com.area51.clasemvp.ui.seguridad.presenter.impl;
 
 import com.area51.clasemvp.net.callback.LoginCallback;
 import com.area51.clasemvp.net.entidad.UsuarioEntidad;
 import com.area51.clasemvp.net.interactor.LoginInteractor;
-import com.area51.clasemvp.net.interactor.LoginInteractorImpl;
+import com.area51.clasemvp.net.interactor.impl.LoginInteractorImpl;
 import com.area51.clasemvp.net.mapper.UsuarioMapper;
+import com.area51.clasemvp.ui.seguridad.presenter.LoginPresenter;
 import com.area51.clasemvp.ui.seguridad.views.LoginView;
 
 public class LoginPresenterImpl implements LoginPresenter, LoginCallback {

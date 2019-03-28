@@ -1,11 +1,12 @@
-package com.area51.clasemvp.ui.seguridad.presenter;
+package com.area51.clasemvp.ui.seguridad.presenter.impl;
 
 import com.area51.clasemvp.net.callback.RegistroCallback;
 import com.area51.clasemvp.net.entidad.UsuarioEntidad;
 import com.area51.clasemvp.net.interactor.RegistroInteractor;
-import com.area51.clasemvp.net.interactor.RegistroInteractorImpl;
+import com.area51.clasemvp.net.interactor.impl.RegistroInteractorImpl;
 import com.area51.clasemvp.net.mapper.UsuarioMapper;
 import com.area51.clasemvp.ui.model.Usuario;
+import com.area51.clasemvp.ui.seguridad.presenter.RegistroPresenter;
 import com.area51.clasemvp.ui.seguridad.views.RegistroView;
 
 public class RegistroPresenterImpl implements RegistroPresenter, RegistroCallback {

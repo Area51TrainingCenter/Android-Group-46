@@ -1,7 +1,10 @@
-package com.area51.clasemvp.net.interactor;
+package com.area51.clasemvp.net.interactor.impl;
 
 import com.area51.clasemvp.net.callback.RegistroCallback;
 import com.area51.clasemvp.net.entidad.UsuarioEntidad;
+import com.area51.clasemvp.net.interactor.RegistroInteractor;
+
+import java.util.UUID;
 
 import io.realm.Realm;
 
@@ -12,6 +15,7 @@ public class RegistroInteractorImpl implements RegistroInteractor {
         try {
             realm.beginTransaction();
 
+            entidad.setId(UUID.randomUUID().toString());
             UsuarioEntidad respuesta = realm.copyToRealm(entidad);
 
             realm.commitTransaction();

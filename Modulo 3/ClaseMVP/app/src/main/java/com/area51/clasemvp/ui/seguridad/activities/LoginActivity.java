@@ -8,12 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.area51.clasemvp.MainActivity;
 import com.area51.clasemvp.ui.BaseActivity;
 import com.area51.clasemvp.R;
 import com.area51.clasemvp.ui.model.Usuario;
 import com.area51.clasemvp.ui.seguridad.presenter.LoginPresenter;
-import com.area51.clasemvp.ui.seguridad.presenter.LoginPresenterImpl;
+import com.area51.clasemvp.ui.seguridad.presenter.impl.LoginPresenterImpl;
 import com.area51.clasemvp.ui.seguridad.views.LoginView;
 
 public class LoginActivity extends BaseActivity implements LoginView {

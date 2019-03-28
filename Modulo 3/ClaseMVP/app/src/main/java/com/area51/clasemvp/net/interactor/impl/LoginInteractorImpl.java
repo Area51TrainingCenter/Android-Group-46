@@ -1,7 +1,8 @@
-package com.area51.clasemvp.net.interactor;
+package com.area51.clasemvp.net.interactor.impl;
 
 import com.area51.clasemvp.net.callback.LoginCallback;
 import com.area51.clasemvp.net.entidad.UsuarioEntidad;
+import com.area51.clasemvp.net.interactor.LoginInteractor;
 
 import io.realm.Realm;
 
