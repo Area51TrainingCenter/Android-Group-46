@@ -13,6 +13,7 @@ public final class UsuarioMapper {
         if (entidad != null) {
             usuario = new Usuario();
             usuario.setId(entidad.getId());
+            usuario.setUsuario(entidad.getUsuario());
             usuario.setNombre(entidad.getNombre());
             usuario.setApellido(entidad.getApellido());
         }
@@ -24,6 +25,7 @@ public final class UsuarioMapper {
         if (obj != null) {
             entidad = new UsuarioEntidad();
             entidad.setId(obj.getId());
+            entidad.setUsuario(obj.getUsuario());
             entidad.setNombre(obj.getNombre());
             entidad.setApellido(obj.getApellido());
             entidad.setContrasenia(obj.getContrasena());

@@ -14,8 +14,8 @@ public class LoginInteractorImpl implements LoginInteractor {
         Realm realm = Realm.getDefaultInstance();
         UsuarioEntidad usuarioEntidad =
                 realm.where(UsuarioEntidad.class)
-                        .equalTo("Usuario", usuario)
-                        .equalTo("Contrasenia", contrasena)
+                        .equalTo("usuario", usuario)
+                        .equalTo("contrasenia", contrasena)
                         .findFirst();
         if (usuarioEntidad == null) {
             callback.onError();
