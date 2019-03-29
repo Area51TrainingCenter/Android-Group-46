@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.area51.clasemvp.ui.BaseActivity;
 import com.area51.clasemvp.R;
+import com.area51.clasemvp.ui.core.activities.HomeActivity;
 import com.area51.clasemvp.ui.model.Usuario;
 import com.area51.clasemvp.ui.seguridad.presenter.LoginPresenter;
 import com.area51.clasemvp.ui.seguridad.presenter.impl.LoginPresenterImpl;
@@ -79,6 +80,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void onSuccess(Usuario usuario) {
+        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(intent);
         Toast.makeText(this, "Usuario existe", Toast.LENGTH_SHORT).show();
     }
 
