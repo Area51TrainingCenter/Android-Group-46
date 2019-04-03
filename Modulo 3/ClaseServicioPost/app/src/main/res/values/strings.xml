@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ClaseServicioPost</string>
+    <string name="lbl_cod_persona">Código Persona</string>
+    <string name="lbl_tipo_documento">Tipo Documento</string>
+    <string name="lbl_numero_documento">Número Documento</string>
+    <string name="lbl_pass">Pass</string>
+    <string name="lbl_primer_nombre">Primer Nombre</string>
+    <string name="lbl_segundo_nombre">Segundo Nombre</string>
+    <string name="lbl_apellido_paterno">Apellido Paterno</string>
+    <string name="lbl_apellido_materno">Apellido Materno</string>
+    <string name="lbl_flag_sexo">Flag Sexo</string>
+    <string name="lbl_fec_nac">Fec Nac</string>
+    <string name="lbl_telefono_fijo">Telefono Fijo</string>
+    <string name="lbl_telefono_cel">Telefono Cel</string>
+    <string name="lbl_des_dire">Dirección</string>
+    <string name="lbl_flag_publi">Flag Publicidad</string>
+    <string name="lbl_maq_id">Maq Id</string>
+    <string name="lbl_opcion">Opción</string>
+    <string name="lbl_origen">Origen</string>
+    <string name="lbl_guardar">Guardar</string>
+    <string name="lbl_correo">Correo</string>
+</resources>

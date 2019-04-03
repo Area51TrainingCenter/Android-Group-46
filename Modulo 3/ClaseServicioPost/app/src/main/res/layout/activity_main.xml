@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etCodPersona"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_cod_persona"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/etTipoDocumento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_tipo_documento"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/etNumeroDocumento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_numero_documento"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_pass"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/etPrimerNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_primer_nombre"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/etSegundoNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_segundo_nombre"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/etApellidoPaterno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_apellido_paterno"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/etApellidoMaterno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_apellido_materno"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/etFlagSexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_flag_sexo"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etFecNac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_fec_nac"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etTelefonoFijo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_telefono_fijo"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/etTelefonoCel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_telefono_cel"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/etCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_correo"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/etDesDire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_des_dire"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etFlagPubli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_flag_publi"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etMaqId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_maq_id"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etOpcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_opcion"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etOrigen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_origen"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/lbl_guardar" />
+    </LinearLayout>
+</ScrollView>
