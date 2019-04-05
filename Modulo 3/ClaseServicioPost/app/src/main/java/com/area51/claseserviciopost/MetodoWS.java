@@ -2,13 +2,14 @@ package com.area51.claseserviciopost;
 
 import retrofit2.Call;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface MetodoWS {
 
     @POST("mantenimientoUsuario")
-    //@FormUrlEncoded
+        //@FormUrlEncoded
     Call<UsuarioResponse> registrarUsuario(@Query("codpersona") String codpersona,
                                            @Query("tipodoc") String tipodoc,
                                            @Query("numdoc") String numdoc,
@@ -27,4 +28,9 @@ public interface MetodoWS {
                                            @Query("maqip") String maqip,
                                            @Query("opcion") String opcion,
                                            @Query("origen") String origen);
+
+    @GET("loginMovil")
+    Call<LoginResponse> validarLogin(@Query("tipodoc") String tipodoc,
+                                     @Query("username") String username,
+                                     @Query("pass") String pass);
 }

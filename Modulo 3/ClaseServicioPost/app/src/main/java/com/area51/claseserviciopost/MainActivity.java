@@ -72,27 +72,27 @@ public class MainActivity extends AppCompatActivity {
                         (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
                 NetworkInfo info = manager.getActiveNetworkInfo();
                 if (info != null) {
+                    String codPersona = etCodPersona.getText().toString();
+                    String tipoDocumento = etTipDoc.getText().toString();
+                    String numeroDocumento = etNumDoc.getText().toString();
+                    String pass = etPass.getText().toString();
+                    String primerNombre = etPrimerNombre.getText().toString();
+                    String segundoNombre = etSegundoNombre.getText().toString();
+                    String apellidoPaterno = etApellidoPaterno.getText().toString();
+                    String apellidoMaterno = etApellidoMaterno.getText().toString();
+                    String flagSexo = etFlagSexo.getText().toString();
+                    String fecNac = etFecNac.getText().toString();
+                    String telFijo = etTelFijo.getText().toString();
+                    String telCel = etTelCel.getText().toString();
+                    String email = etEmail.getText().toString();
+                    String desDire = etDesDirec.getText().toString();
+                    String flagPubli = etFlagPubli.getText().toString();
+                    String maqId = etMaqId.getText().toString();
+                    String opcion = etOpcion.getText().toString();
+                    String origen = etOrigen.getText().toString();
+
                     if (info.isConnected()) {
                         //Tiene Internet
-                        String codPersona = etCodPersona.getText().toString();
-                        String tipoDocumento = etTipDoc.getText().toString();
-                        String numeroDocumento = etNumDoc.getText().toString();
-                        String pass = etPass.getText().toString();
-                        String primerNombre = etPrimerNombre.getText().toString();
-                        String segundoNombre = etSegundoNombre.getText().toString();
-                        String apellidoPaterno = etApellidoPaterno.getText().toString();
-                        String apellidoMaterno = etApellidoMaterno.getText().toString();
-                        String flagSexo = etFlagSexo.getText().toString();
-                        String fecNac = etFecNac.getText().toString();
-                        String telFijo = etTelFijo.getText().toString();
-                        String telCel = etTelCel.getText().toString();
-                        String email = etEmail.getText().toString();
-                        String desDire = etDesDirec.getText().toString();
-                        String flagPubli = etFlagPubli.getText().toString();
-                        String maqId = etMaqId.getText().toString();
-                        String opcion = etOpcion.getText().toString();
-                        String origen = etOrigen.getText().toString();
-
                         MetodoWS metodoWS = Configuracion
                                 .obtenerConfiguracion().create(MetodoWS.class);
                         Call<UsuarioResponse> call = metodoWS.registrarUsuario(
@@ -130,6 +130,27 @@ public class MainActivity extends AppCompatActivity {
                         });
                     } else {
                         //No tiene internet
+                        UsuarioInterfaz sql = new UsuarioImpl();
+                        UsuarioEntity entidad = new UsuarioEntity();
+                        entidad.setApematerno(apellidoMaterno);
+                        entidad.setApepaterno(apellidoPaterno);
+                        entidad.setCodpersona(codPersona);
+                        entidad.setEmailprin(email);
+                        entidad.setDesdire(desDire);
+                        entidad.setFecnaci(fecNac);
+                        entidad.setFlgpubli(flagPubli);
+                        entidad.setFlgsexo(flagSexo);
+                        entidad.setMaqip(maqId);
+                        entidad.setNumdoc(numeroDocumento);
+                        entidad.setOpcion(opcion);
+                        entidad.setOrigen(origen);
+                        entidad.setPass(pass);
+                        entidad.setTelcel(telCel);
+                        entidad.setTelfijo(telFijo);
+                        entidad.setTipodoc(tipoDocumento);
+                        entidad.setPrinombre(primerNombre);
+                        entidad.setSegnombre(segundoNombre);
+                        sql.registrar(entidad);
                     }
                 }
             }

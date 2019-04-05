@@ -19,4 +19,6 @@
     <string name="lbl_origen">Origen</string>
     <string name="lbl_guardar">Guardar</string>
     <string name="lbl_correo">Correo</string>
+    <string name="lbl_usuario">Usuario</string>
+    <string name="lbl_login">Iniciar Sesión</string>
 </resources>
